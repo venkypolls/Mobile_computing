@@ -78,29 +78,24 @@ class PosenetPoints:
 
 
 objects = get_data()
-
-
-
-wrist=np.array(objects[0].leftWrist_x)
-scaler_main=MinMaxScaler(feature_range=(-1,1))
-scaler = scaler_main.fit(wrist.reshape(-1,1))
-scaled = scaler.transform(wrist)
-plt.plot(scaled)
-# print(len(objects))
-# print(objects[0].leftElbow)
-
-# mainData = []
-# classData = []
-# for object in objects:
-#     temp = []
-#     temp = object.leftElbow
-#     temp+=object.rightElbow
-#     temp+=object.leftShoulder
-#     temp+=object.rightShoulder
-#     temp+=object.leftWrist
-#     temp+=object.rightWrist
-#     mainData.append(temp)
-#     classData.append(object.type)
+mainData = []
+classData = []
+for object in objects:
+    temp = []
+    temp = object.leftElbow_x
+    temp = object.leftElbow_y
+    temp+=object.rightElbow_x
+    temp += object.rightElbow_y
+    temp+=object.leftShoulder_x
+    temp += object.leftShoulder_y
+    temp+=object.rightShoulder_x
+    temp += object.rightShoulder_y
+    temp+=object.leftWrist_x
+    temp += object.leftWrist_y
+    temp+=object.rightWrist_x
+    temp += object.rightWrist_y
+    mainData.append(temp)
+    classData.append(object.type)
 
 # for i in range(len(mainData)):
 #     print(len(mainData[i]))
